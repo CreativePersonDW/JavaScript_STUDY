@@ -1,0 +1,154 @@
+<html lang='ko'>
+
+<head>
+    <title>HTML 태그에 접근하기</title>
+    <style>
+        .area {
+            width: 300px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        p{
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>HTML 태그에 접근하기</h1>
+    <h3>아이디로 접근하기</h3>
+    <div id="area1" class="area"></div>
+    <button onclick="accessId();">아이디로 접근</button>
+    <script>
+        function accessId() {
+            var area1 = document.getElementById("area1");
+            area1.style.backgroundColor = "yellow";
+            area1.innerHTML += "<p>아이디로 접근 성공!<br>";
+            // area1.innerHTML += "김동원";
+        }
+    </script>
+
+    <h3>태그명으로 접근</h3>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <button onclick="accessTagName();">태그명으로 접근</button>
+    <script>
+        function accessTagName() {
+            var list = document.getElementsByTagName("li");
+
+            // console.log("전달받은 li태그 : " + list);
+            // console.log(list);
+            // console.log("전달받은 li태그의 길이 : " + list.length);
+
+            var changeColor = 50;
+
+            for (var i = 0; i < list.length; i++) {
+                console.log(list[i]);
+                list[i].style.backgroundColor = "rgb(180,220," + changeColor + ")";
+                changeColor += 50;
+            }
+
+
+            // for(var i in list){ // for-in문이라고 하고 index를 도출해서 돌아가는 for문
+            //     console.log(list[i]);
+            //     list[i].style.backgroundColor = "rgb(180,220," + changeColor + ")";
+            //     changeColor += 50;
+            // }
+
+        }
+    </script>
+
+    <hr>
+
+    <h3>name으로 접근</h3>
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="game" id="game">
+                        <label for="game">게임</label></td>
+
+                    <td><input type="checkbox" name="hobby" value="music" id="music">
+                        <label for="music">음악감상</label></td>
+
+                    <td><input type="checkbox" name="hobby" value="movie" id="movie">
+                        <label for="movie">영화보기</label></td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="book" id="book">
+                        <label for="book">독서</label></td>
+
+                    <td><input type="checkbox" name="hobby" value="travel" id="travel">
+                        <label for="travel">여행</label></td>
+
+                    <td><input type="checkbox" name="hobby" value="exercise" id="exercise">
+                        <label for="exercise">운동</label></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div id="area2" class="area"></div>
+    <button onclick="accessName();">name으로 접근</button>
+    <script>
+        function accessName(){
+            var hobby = document.getElementsByName("hobby");
+            console.log(hobby);
+
+            var checkItem = "";
+            
+            for(var i in hobby){
+                if(hobby[i].checked == true){
+                    checkItem += hobby[i].value + "선택함<br>";
+                }
+            }
+            console.log(checkItem);
+            document.getElementById("area2").innerHTML = checkItem;
+        }
+    </script>
+    <hr>
+
+    <h3>text박스의 value값 읽어오기</h3>
+    <form>
+        <label>이름 : </label><input type="text" name="userName"
+        id="userName">
+        <br>
+        <input type="button" onclick="readValue();"
+        value="input값 확인">
+    </form>
+    
+    <div id="area3" class="area"></div>
+    <script>
+        function readValue(){
+            // 사용자가 input(text타입)태그에 입력한 값을
+            // div에 넣기
+            // document.getElementById("area3").innerHTML =
+            // document.getElementById("userName").value;
+            // 사용자가 입력을 안 했을 시에는 "이름을 입력하세요"를 alert로 띄우고
+            // 입력 했을 시 입력값을 div에 넣자
+
+            var input = document.getElementById("userName").value;
+            if(input==""){
+                alert("이름을 입력하세요");
+            }else{
+                document.getElementById("area3").innerHTML += input + "<br>";
+            }
+            
+        }
+    </script>
+    
+    
+    
+    
+    
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br>
+</body>
+
+</html>
