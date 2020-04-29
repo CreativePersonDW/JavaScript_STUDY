@@ -1,0 +1,67 @@
+<html lang="ko">
+    <head>
+        <title>String과 Math</title>
+
+
+
+    </head>
+    <body>
+        <h1>String과 Math</h1>
+        <h3>String</h3>
+        <p>
+            "",''로 묶여 있는 리터럴이다.<br>
+            자바스크립트의 내장객체로 String객체의 기본적인 메소드가 있다.
+        </p>
+        <button onclick="showStringMethod();">문자열 처리 메소드</button>
+        <div id="area1" class="area1"></div>
+        <script>
+            function showStringMethod(){
+                var str1 = "Apple Iphone";
+
+                var area1 = document.getElementById("area1");
+
+                area1.innerHTML += "toUpperCase() : " + str1.toUpperCase() + "<br>";
+                area1.innerHTML += "toLowerCase() : " + str1.toLowerCase() + "<br>";
+
+                area1.innerHTML += "length : " + str1.length + "<br>";
+
+                area1.innerHTML += "문자열에서 'e'의 위치 : " + (str1.indexOf('e') + 1) + "번째에 위치 <br>";
+                area1.innerHTML += "문자열의 뒤에서 'e'의 위치 : " + (str1.lastIndexOf('e') + 1) + "번째에 위치 <br>";
+
+                for(var i = 0; i < str1.length; i++){
+                    area1.innerHTML += i + "번째 인덱스" + str1.charAt(i) + "<br>";
+                }
+
+                var str2 = "사과, 바나나, 복숭아, 키위, 파인애플";
+                var fruits = str2.split(","); 
+                for(var i = 0; i< fruits.length; i++){
+                    area1.innerHTML += (i+1) + "번째 과일 : " + fruits[i] + "<br>"; 
+                }
+
+            }
+        </script>
+
+        <hr>
+
+        <h3>Math</h3>
+        <button onclick="showMathMethod();">숫자 처리 메소드</button>
+        <div id="area2" class="area2"></div>
+        <script>
+            function showMathMethod(){
+                var num1 = -123;
+                var area2 = document.getElementById("area2");
+                area2.innerHTML += "절대값 : " + Math.abs(num1) + "<br>";
+                area2.innerHTML += "임의의 난수 발생 : " + Math.floor(Math.random()*10 + 1) + "<br>";
+
+                // 소수점 아래에서 반올림이나 내림 올림을 하려면 
+                // 10의 배수를 곱한 뒤 다시 나누어주면 된다.
+                area2.innerHTML += "반올림 : " + Math.round(123.456*100)/100 + "<br>"; // 소수점 둘째 자리까지 반올림
+                area2.innerHTML += "내림 : " + Math.floor(123.456) + "<br>";
+                area2.innerHTML += "올림 : " + Math.ceil(123.456) + "<br>";
+
+
+            }
+        </script>
+    </body>
+    
+</html>
