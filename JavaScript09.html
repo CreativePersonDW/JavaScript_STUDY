@@ -1,0 +1,90 @@
+<html lang='ko'>
+    <head>
+        <title>함수2</title>
+        <style>
+            .area{
+                background:orange;
+                border:1px solid black;
+                height:250px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>함수2</h1>
+        <h3>매개변수로 함수 전달</h3>
+        <p>함수도 하나의 자료형이기 때문에 매개변수로도 전달 가능하다.</p>
+        <h4>익명 함수를 매개변수로 활용</h4>
+        <div id="area1" class="area"></div>
+        <script>
+            function callFunctionTenTimes(otherFunction){
+                for(var i = 0 ; i < 10 ; i++){
+                    otherFunction(i);
+                }
+            }
+            callFunctionTenTimes(function(i){
+                document.getElementById("area1").innerHTML += (i + 1 ) + "번째 함수 호출!<br>";
+            })
+        </script>
+
+        <hr>
+
+        <h4>선언적 함수를 매개변수로 전달</h4>
+        <button onclick = "callJustFunction(justFunction);">실행하기</button>
+        <div id="area2" class="area"></div>
+        <script>
+            function callJustFunction(otherFunction){
+                var result = true;
+                for(var i = 10 ; i > 0 ; i--){
+                    result = otherFunction(i);
+                    if(result == false){
+                        break;
+                    }
+                }
+                if(result == true){
+                    alert('펑!! 펑!! 폭파되었습니다. 바이러스 침투!!');
+                }else{
+                    alert('살았넹?');
+                }
+            }
+            function justFunction(i){
+                var result = true;
+                if(i>5){
+                    result = confirm(i + '번만 더 클릭하면 자동으로 폭발합니다.');
+                }else if(i>3){
+                    result = confirm('마지막 경고입니다! ' + i + '번만 더 클릭하면 자동으로 폭발합니다.');
+                }else if(i>1){
+                    result = confirm('난 분명 말했어요~! ' + i + '번만 더 클릭하면 자동으로 폭발합니다.\n후회하지 마세요!!');
+                }else{
+                    result = confirm('한번만 더 클릭하면 폭발한다구!!!!!!');
+                }
+                return result;
+            }
+        </script>
+
+        <hr>
+
+        <h4>익명 함수를 리턴하는 함수</h4>
+        <input type="text" id="name">
+        <button onclick = "returnFunction()();">실행확인</button>
+        <div id = "area3" class = "area"></div>
+        <script>
+            function returnFunction(){
+                var name = document.getElementById("name").value;
+                return function(){
+                    alert(name + '님 환영합니다.');
+                    document.getElementById("area3").innerHTML = name + '님 환영합니다.';
+                }
+            }
+        </script>
+
+
+
+
+
+
+
+
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br>
+    </body>
+</html>
