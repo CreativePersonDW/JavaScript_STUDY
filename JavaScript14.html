@@ -1,0 +1,77 @@
+<html lang="ko">
+
+<head>
+    <title>캡슐화와 상속</title>
+    <style>
+        .area {
+            background: lightgray;
+            border: 1px solid black;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>캡슐화와 상속</h1>
+    <h3>캡슐화</h3>
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="area"></div>
+    <script>
+        // 생성자 함수
+        function GirlGroup(omg, mc, m) {
+            var groupName = omg;
+            var memberCount = mc;
+            var members = m;
+
+
+            this.getGroupName = function () {
+                return groupName;
+            }
+            this.getMemberCount = function () {
+                return memberCount;
+            }
+
+            this.getmembers = function () {
+                return members;
+            }
+
+            this.setGroupName = function (omg) {
+                this.groupName = omg;
+            }
+
+            this.setMemberCount = function (mc) {
+                this.memberCount = mc;
+            }
+
+            this.setmembers = function (m) {
+                this.members = m;
+            }
+            
+        }
+
+        function test1() {
+            var omg = '오마이걸';
+            var mc = 7;
+            var m = ['효정', '미미', '유아', '승희', '지호', '비니', '아린'];
+
+            var ohmygirl = new GirlGroup(omg, mc, m);
+            console.log(ohmygirl);
+            console.log(ohmygirl.getMemberCount());
+
+            var arr = [];
+            arr.push(ohmygirl);
+
+            var area1 = document.getElementById("area1");
+            for(var i in arr){
+                area1.innerHTML += "걸그룹 이름 : " + arr[i].getGroupName() + "<br>" + 
+                                   "걸그룹 수 : " + arr[i].getMemberCount() + "<br>" + 
+                                   "걸그룹 멤버 이름 : " + arr[i].getmembers();
+            }
+        }
+        
+    </script>
+
+
+</body>
+
+</html>

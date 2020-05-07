@@ -1,0 +1,56 @@
+<html lang="ko">
+    <head>
+        <title>클로저</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>클로저</h1>
+        <h3>지역변수의 스코프(범위)</h3>
+        <p>함수 내부에 선언된 변수는 함수 밖에서 사용할 수 없다.</p>
+        <script>
+            function test(name){
+                var output = "Hello" + name + "님!";
+            }
+        </script>
+        <hr>
+
+        <h3>클로저</h3>
+        <p>지역변수는 함수가 실행될 떄 생성되고 함수가 종료될 떄 사라진다.<br>
+            하지만 함수를 리턴하는 함수(클로저)를 이용하면 규칙을 위반할 수 있다.
+        </p>
+        <script>
+            function test2(name){
+                var output = "Hello" + name + "님!";
+                return function(){
+                    return output;
+                }
+            }
+            
+            // alert(test2("김동원")());
+            // 매개변수로 넣어줬던 값이 test2 함수의 지역변수로 존재하다가 함수가
+            // 끝날 때 소멸되지 않고 외부로 return되어 alert를 해볼 수 있다.
+        </script>
+
+        <h3>여러 개의 클로저</h3>
+        <button onclick="test4(this);">JavaScript</button>
+        <button onclick="test4(this);">jQuery</button>
+        <script>
+            function test3(subject){
+                var output = "오늘 배운 내용은 " + subject + "입니다.";
+                return function(){
+                    return output;
+                }
+            }
+            function test4(button){ // 매개변수 button은 test4함수를 발생시킨 객체(태그)
+                console.log(button);
+                var subject = button.innerHTML;
+
+                alert(test3(subject)());
+            }
+        </script>
+
+    </body>
+    
+</html>

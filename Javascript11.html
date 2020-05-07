@@ -1,0 +1,109 @@
+<html lang="ko">
+
+<head>
+    <title>객체 배열 및 생성자 </title>
+    <style>
+        .area {
+            height: 250px;
+            border: 1px solid black;
+            background: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>객체 배열</h2>
+    <h3>객체와 배열을 사용한 데이터 관리</h3>
+    <button onclick="test1();">실행확인</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function test1() {
+            var student0 = { name: '김동원', java: 90, oracle: 80, HTML5: 70, CSS3: 70, javaScript: 40 };
+            var student1 = { name: '서정완', java: 100, oracle: 90, HTML5: 50, CSS3: 100, javaScript: 80 };
+            var student2 = { name: '변승훈', java: 90, oracle: 90, HTML5: 80, CSS3: 80, javaScript: 70 };
+            var student3 = { name: '변진희', java: 80, oracle: 70, HTML5: 80, CSS3: 60, javaScript: 100 };
+            var student4 = { name: '오영은', java: 90, oracle: 90, HTML5: 100, CSS3: 70, javaScript: 90 };
+            // 배열 선언
+            var students = [];
+            students.push(student0);
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+            students.push(student4);
+
+            console.log(students);
+
+            // 각 객체별 메소드 추가
+            for (var i in students) {
+                students[i].getSum = function () {
+                    return this.java + this.oracle + this.HTML5 + this.CSS3 + this.javaScript;
+                }
+                students[i].getAvg = function () {
+                    return this.getSum() / 5;
+                }
+            }
+            for (var i in students) {
+                console.log(students[i].name + " 총점 : " + students[i].getSum() + " 평균 : " + students[i].getAvg());
+            }
+        }
+
+    </script>
+
+<hr>
+
+<h3>생성자 함수</h3>
+<p>new 키워드를 사용해 객체를 생성할 수 있는 함수를 의미한다.<br>
+    (함수명에 첫글자가 대문자)
+</p>
+<button onclick="test2();">실행확인</button>
+<div id = "area2" class="area"></div>
+<div id = "area3" class="area"></div>
+<script>
+    function Student(name, java, oracle, html5, css3, javascript){
+        // 속성 정의
+        this.name = name;
+        this.java = java;
+        this.oracle = oracle;
+        this.html5 = html5;
+        this.css3 = css3;
+        this.javascript = javascript;
+
+        // 메소드 정의
+        this.getSum = function(){
+            return this.java + this.oracle + this.html5 +
+                    this.css3 + this.javascript;
+        }
+
+        this.getAvg = function(){
+            return this.getSum()/5;
+        }
+
+        this.forPrint = function(){
+            return this.name + ", 총점 : " + this.getSum() + ", 평균 : " + this.getAvg() + "<br>";
+        }
+    }
+
+    var students = [];
+
+    function test2(){
+        var student = new Student(prompt("이름을 입력하세요"),
+                        parseInt(prompt("자바 점수를 입력하세요.")),
+                        parseInt(prompt("오라클 점수를 입력하세요.")),
+                        parseInt(prompt("html5 점수를 입력하세요.")),
+                        parseInt(prompt("css3 점수를 입력하세요.")),
+                        parseInt(prompt("javascript 점수를 입력하세요.")));
+        document.getElementById("area2").innerHTML += student + "<br>" + student.forPrint();
+        console.log(student);
+        students.push(student);
+
+        for(var i in students){
+            document.getElementById("area3").innerHTML += students[i].forPrint() + "<br>";
+        }
+        
+    }
+</script>
+
+
+</body>
+
+</html>
