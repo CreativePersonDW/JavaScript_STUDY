@@ -1,0 +1,42 @@
+<html lang="ko">
+
+<head>
+    <title>연습 1</title>
+    <style>
+        #area {
+            background: yellow;
+            border: 1px solid black;
+            height: 100px;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>연습 1</h1>
+        <label>구매자 : </label>
+        <input type="text" id="name" name="name" placeholder="구매자를 입력하세요."><br>
+
+        <label>상품명 : </label>
+        <input type="text" name="product" id="product" placeholder="상품명을 입력하세요."><br>
+
+        <label>가격 : </label>
+        <input type="text" name="price" id="price" placeholder="가격을 입력하세요."><br>
+    <button onclick="ex1();">입력값 출력하기</button>
+    <div id="area"></div>
+
+    <script>
+        function ex1() {
+            var area = document.getElementById("area");
+            var name = document.getElementById("name").value;
+            var product = document.getElementById("product").value;
+            var price = document.getElementById("price").value;
+            area.innerHTML += "구입자 : " + name + "<br>"
+                + "상품명 : " + product + "<br>"
+                + "가격 : " + price;
+        }
+    </script>
+
+</body>
+
+</html>

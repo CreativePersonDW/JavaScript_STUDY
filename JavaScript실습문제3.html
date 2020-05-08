@@ -1,0 +1,78 @@
+<html lang="ko">
+
+<head>
+    <title>연습 3</title>
+    <style>
+        #filedset {
+            background: lightgray;
+            width: 450px;
+        }
+
+        .area {
+            margin: 10px;
+            padding: 10px;
+            background: yellow;
+            width: 480px;
+            height: 80px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>연습 3</h1>
+    <fieldset id="filedset" style="text-align : center;">
+        <legend><b>검색할 항목을 선택하세요.</b></legend>
+        <input type="radio" name="radio" value="제목" id="title" onclick="clic();" value="제목">
+        <label>제목</label>
+        <input type="radio" name="radio" value="날짜" id="date" onclick="clic();" value="날짜">
+        <label>날짜</label>
+        <input type="radio" name="radio" value="작성자" id="writer" onclick="clic();" value="작성자">
+        <label>작성자</label>
+    </fieldset>
+    <hr>
+    <div id="area1" class="area">
+        <label>검색할 제목을 입력하세요. </label><br>
+        <input type="text" id="text" size="50">
+        <input type="submit" value="검색">
+    </div>
+  
+    <div id="area2" class="area">
+        <label>검색할 날짜를 선택하세요.</label><br>
+        <input type="date" size="15">
+        <input type="date" size="15">
+        <input type="submit" value="검색">
+    </div>
+    
+    <div id="area3" class="area">
+        <label>검색할 작성자 아이디를 입력하세요:</label><br>
+        <input type="text" id="id" size="30">
+        <input type="submit" value="검색">
+    </div>
+
+    <script>
+            function clic(){
+               
+            if (document.getElementById("title").checked) {
+                document.getElementById("area1").style.display = "block";
+                document.getElementById("area2").style.display = "none";
+                document.getElementById("area3").style.display = "none";
+
+            }
+            if (document.getElementById("date").checked) {
+                document.getElementById("area1").style.display = "none";
+                document.getElementById("area2").style.display = "block";
+                document.getElementById("area3").style.display = "none";
+            }
+            if (document.getElementById("writer").checked) {
+                document.getElementById("area1").style.display = "none";
+                document.getElementById("area2").style.display = "none";
+                document.getElementById("area3").style.display = "block";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
